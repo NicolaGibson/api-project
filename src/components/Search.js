@@ -6,8 +6,18 @@ class Search extends React.Component {
   }
   render() {
     return (
-      <div>
-        <h1 />
+      <div className="search">
+        <form onSubmit={this.props.onSubmit}>
+          <input
+            type="text"
+            onChange={this.props.handleChange}
+            value={this.props.inputText}
+            className="search-input"
+            id="search-tf"
+            placeholder="Enter cocktail name"
+          />
+          <input type="submit" />
+        </form>
       </div>
     );
   }

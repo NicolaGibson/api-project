@@ -7,20 +7,21 @@ class App extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
 
-    this.State = {
+    this.state = {
       cocktailSearch: "",
       results: []
     };
   }
 
   handleChange(event) {
+    console.log(event.target);
     event.preventDefault();
     this.setState({ cocktailSearch: event.target.value });
   }
 
   allDrinksSearch(cocktailSearch) {
     fetch(
-      `https://www.thecocktaildb.com/api/json/v1/1/search.php?${cocktailSearch}`
+      `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${cocktailSearch}`
     )
       .then(function(response) {
         return response.json();
@@ -44,7 +45,7 @@ class App extends React.Component {
       <div className="App">
         <h1>Cocktail Finder</h1>
         <Search
-          onChange={this.handleChange}
+          handleChange={this.handleChange}
           inputText={this.state.cocktailSearch}
           onSubmit={this.handleSubmit}
         />
